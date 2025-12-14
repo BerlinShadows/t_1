@@ -25,6 +25,19 @@ export class UserService {
         return user.balance;
     }
 
+    async getBalanceFromHistory(userId: number): Promise<number> {
+        const result = await this.lRepository
+            .createQueryBuilder('ph')
+            .select(
+                `COALESCE(SUM(CASE WHEN ph.action = 'deposit' THEN ph.amount ELSE -ph.amount END), 0)`,
+                'balance',
+            )
+            .where('ph.userId = :userId', { userId })
+            .getRawOne();
+
+        return Number(result.balance);
+    }
+
 
     async adjustBalance(
         userId: number,

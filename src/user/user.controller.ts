@@ -15,6 +15,12 @@ export class UserController {
         return await this.service.getBalance(userId);
     }
 
+    @Get(':id/balance-from-history')
+    async getBalanceFromHistory(@Param('id', ParseIntPipe) id: number): Promise<{ balance: number }> {
+        const balance = await this.service.getBalanceFromHistory(id);
+        return { balance: Number(balance.toFixed(2)) };
+    }
+
     @Patch(':id/balance')
     async adjustBalance(
         @Param('id', ParseIntPipe) id: number,
