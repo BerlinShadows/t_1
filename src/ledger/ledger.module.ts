@@ -11,5 +11,6 @@ import { Ledger } from './entity/ledger.entity';
     ],
     controllers: [LedgerController],
     providers: [LedgerService],
+    exports: [LedgerService],
 })
 export class LedgerModule { }
