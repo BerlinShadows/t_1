@@ -13,14 +13,14 @@ export class LedgerService {
         private readonly dataSource: DataSource,
     ) { }
 
-    async getBalanceFromHistory(userId: number): Promise<number> {
+    async getBalanceFromHistory(userId: number): Promise<Number> {
         const result = await this.lRepository
-            .createQueryBuilder('ph')
+            .createQueryBuilder('ledger')
             .select(
-                `COALESCE(SUM(CASE WHEN ph.action = 'deposit' THEN ph.amount ELSE -ph.amount END), 0)`,
+                `COALESCE(SUM(CASE WHEN ledger.action = 'deposit' THEN ledger.amount ELSE -ledger.amount END), 0)`,
                 'balance',
             )
-            .where('ph.userId = :userId', { userId })
+            .where('ledger.userId = :userId', { userId })
             .getRawOne();
 
         return Number(result.balance);

@@ -11,7 +11,7 @@ export class UserService {
         private readonly uRepository: Repository<User>,
     ) { }
 
-    async getBalance(id: number) {
+    async getBalance(id: number): Promise<Number> {
         const user = await this.uRepository.findOneBy({
             id
         })

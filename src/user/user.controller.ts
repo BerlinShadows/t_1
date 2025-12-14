@@ -13,7 +13,7 @@ export class UserController {
     ) { }
 
     @Get(':id/balance')
-    async balance(@Param('id', ParseIntPipe) userId: number) {
+    async balance(@Param('id', ParseIntPipe) userId: number): Promise<Number> {
         return await this.uService.getBalance(userId);
     }
 
