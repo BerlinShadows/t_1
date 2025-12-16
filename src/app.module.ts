@@ -2,12 +2,11 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { AppConfigModule } from './V1/config/config.module';
+import { AppConfigModule } from './config/config.module';
+import { V1Module } from './V1/v1.module';
+import { V2Module } from './V2/v2.module';
 import { User } from './V1/user/entity/user.entity';
 import { Ledger } from './V1/ledger/entity/ledger.entity';
-import { UserModule } from './V1/user/user.module';
-import { LedgerModule } from './V1/ledger/ledger.module';
-import { V2Module } from './V2/v2.module';
 import { UserOrm } from './V2/infrastructure/persistence/typeorm/entities/user.orm-entity';
 import { TransactionOrm } from './V2/infrastructure/persistence/typeorm/entities/transaction.orm-entity';
 
@@ -33,8 +32,7 @@ import { TransactionOrm } from './V2/infrastructure/persistence/typeorm/entities
       }),
       inject: [ConfigService],
     }),
-    UserModule,
-    LedgerModule,
+    V1Module,
     V2Module
   ],
   controllers: [],

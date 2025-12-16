@@ -5,7 +5,7 @@ import { User } from './entity/user.entity';
 import { AdjustBalanceDto } from './dto/adjust-balance.dto';
 import { LedgerService } from '../ledger/ledger.service';
 
-@Controller('users')
+@Controller('v1/users')
 export class UserController {
     constructor(
         private readonly uService: UserService,

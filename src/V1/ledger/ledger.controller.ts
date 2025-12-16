@@ -2,7 +2,7 @@ import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 
 import { LedgerService } from './ledger.service';
 
-@Controller('ledger')
+@Controller('v1/ledger')
 export class LedgerController {
     constructor(
         private readonly service: LedgerService,
