@@ -4,9 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { User } from './entity/user.entity';
-import { LedgerModule } from 'src/ledger/ledger.module';
-import { Ledger } from 'src/ledger/entity/ledger.entity';
-import { LedgerService } from 'src/ledger/ledger.service';
+import { Ledger } from '../ledger/entity/ledger.entity';
+import { LedgerModule } from '../ledger/ledger.module';
+import { LedgerService } from '../ledger/ledger.service';
+
 
 @Module({
     imports: [

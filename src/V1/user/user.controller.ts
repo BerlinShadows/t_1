@@ -3,7 +3,7 @@ import { Body, Controller, Get, Param, ParseIntPipe, Patch } from '@nestjs/commo
 import { UserService } from './user.service';
 import { User } from './entity/user.entity';
 import { AdjustBalanceDto } from './dto/adjust-balance.dto';
-import { LedgerService } from 'src/ledger/ledger.service';
+import { LedgerService } from '../ledger/ledger.service';
 
 @Controller('users')
 export class UserController {

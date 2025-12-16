@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
-import { Ledger } from "src/ledger/entity/ledger.entity";
+import { Ledger } from "src/V1/ledger/entity/ledger.entity";
 
 @Entity({ name: 'user' })
 export class User {

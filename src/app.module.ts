@@ -2,11 +2,15 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { UserModule } from './user/user.module';
-import { AppConfigModule } from './config/config.module';
-import { LedgerModule } from './ledger/ledger.module';
-import { User } from './user/entity/user.entity';
-import { Ledger } from './ledger/entity/ledger.entity';
+import { AppConfigModule } from './V1/config/config.module';
+import { User } from './V1/user/entity/user.entity';
+import { Ledger } from './V1/ledger/entity/ledger.entity';
+import { UserModule } from './V1/user/user.module';
+import { LedgerModule } from './V1/ledger/ledger.module';
+import { V2Module } from './V2/v2.module';
+import { UserOrm } from './V2/infrastructure/persistence/typeorm/entities/user.orm-entity';
+import { TransactionOrm } from './V2/infrastructure/persistence/typeorm/entities/transaction.orm-entity';
+
 
 @Module({
   imports: [
@@ -21,14 +25,17 @@ import { Ledger } from './ledger/entity/ledger.entity';
         database: configService.get<string>('DATABASE_NAME'),
         entities: [
           User,
-          Ledger
+          Ledger,
+          UserOrm,
+          TransactionOrm
         ],
         synchronize: true,
       }),
       inject: [ConfigService],
     }),
     UserModule,
-    LedgerModule
+    LedgerModule,
+    V2Module
   ],
   controllers: [],
   providers: [],

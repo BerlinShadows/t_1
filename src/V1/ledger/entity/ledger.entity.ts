@@ -1,5 +1,6 @@
-import { User } from "src/user/entity/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+
+import { User } from "src/V1/user/entity/user.entity";
 
 @Entity({ name: 'ledger' })
 export class Ledger {
